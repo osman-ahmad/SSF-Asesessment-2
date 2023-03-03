@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+		.error{
+			color:red
+		}
+	</style>
+    <title>Shipping Address</title>
+</head>
+<body>
+    
+        <h1>Shipping Address</h1>
+    
+    <form action="#" data-th-action="@{/item/order}" data-th-object="${details}" method="post">
+        
+        Name: 
+        <input type="text" data-th-field="*{name}">
+        <span class="error" data-th-if="${#fields.hasErrors('name')}"
+                data-th-errors="*{name}"></span>
+            
+        <br>
+        
+        Address: 
+        <input type="text" data-th-field="*{address}">
+        <span class="error" data-th-if="${#fields.hasErrors('address')}"
+                data-th-errors="*{address}"></span>
+            
+        <br>
+        
+                        
+        <button onclick="history.back()">Back</button>
+        <button type="submit">Checkout</button>
+            
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Shopping Cart</title>
+	</head>
+	<body>
+		<!--
+			Feel free to make changes to this HTML but do no change the option in select
+		-->
+		
+		<h1>Shopping Cart</h1>
+		<form action="#" data-th-action="@{/additem}" data-th-object="${order}" method="get">
+			<div>
+				<table>
+					<tr>
+						<td>Item:</td>
+						<td>
+							<select name="item">
+								<option value="apple" data-th-field="*{item}">Apple</option>
+								<option value="orange" data-th-field="*{item}">Orange</option>
+								<option value="bread" data-th-field="*{item}">Bread</option>
+								<option value="cheese" data-th-field="*{item}">Cheese</option>
+								<option value="chicken" data-th-field="*{item}">Chicken</option>
+								<option value="mineral_water" data-th-field="*{item}">Mineral Water</option>
+								<option value="instant_noodles" data-th-field="*{item}">Instant Noodles</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Quantity:</td>
+						<td>
+							<input type="number" name="quantity" size="4" placeholder="Quantity" data-th-field="*{quantity}" >
+							<span class="error" data-th-if="${#fields.hasErrors('quantity')}" data-th-errors="*{quantity}"></span>
+						</td>
+					</tr>
+				</table>
+
+				<table border="1" style="margin-top: 2vh; margin-bottom: 2vh;">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Quantity</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-each="order:${order}">
+							<td data-th-text="${order.item}"></td>
+							<!-- <td data-th-text="${o.quantity}"></td> -->
+						</tr>
+					</tbody>
+				</table>
+
+				<div>
+					<button type="button">Add</button>
+					<button type="submit" formmethod="Get" formaction="/shippingaddress">Next</button>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
